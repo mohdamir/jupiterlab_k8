@@ -1,4 +1,4 @@
-# jupiterlab_k8
+# jupyterlab_k8
 Deployment files to install JupiterLab on K8 cluster
 
 kubectl apply -f jupyterlab-pvc.yaml
