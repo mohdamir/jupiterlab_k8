@@ -20,6 +20,9 @@ spec:
         env:
         - name: JUPYTER_ENABLE_LAB
           value: "yes"
+        env:
+        - name: JUPYTER_TOKEN
+          value: "your-secure-token"
         volumeMounts:
         - mountPath: /home/jovyan/work  # To persist the notebook files
           name: jupyterlab-workspace
