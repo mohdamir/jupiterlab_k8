@@ -24,9 +24,14 @@ spec:
         - name: JUPYTER_TOKEN
           value: "your-secure-token"
         volumeMounts:
-        - mountPath: /home/jovyan/work  # To persist the notebook files
-          name: jupyterlab-workspace
+        - mountPath: /home/jovyan/work  # This will store user notebooks
+          name: jupyterlab-notebooks
+        - mountPath: /home/jovyan/.local  # This will store Python libraries (e.g., installed with pip)
+          name: jupyterlab-libs
       volumes:
-      - name: jupyterlab-workspace
-        persistentVolumeClaim:
-          claimName: jupyterlab-pvc
+        - name: jupyterlab-notebooks
+          persistentVolumeClaim:
+            claimName: jupyterlab-notebooks-pvc
+        - name: jupyterlab-libs
+          persistentVolumeClaim:
+            claimName: jupyterlab-libs-pvc
