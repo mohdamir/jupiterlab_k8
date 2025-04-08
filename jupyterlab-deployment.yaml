@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyterlab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jupyterlab
+  template:
+    metadata:
+      labels:
+        app: jupyterlab
+    spec:
+      containers:
+      - name: jupyterlab
+        image: jupyter/base-notebook:latest  # You can replace this with a more specific JupyterLab image if desired
+        ports:
+        - containerPort: 8888
+        env:
+        - name: JUPYTER_ENABLE_LAB
+          value: "yes"
+        volumeMounts:
+        - mountPath: /home/jovyan/work  # To persist the notebook files
+          name: jupyterlab-workspace
+      volumes:
+      - name: jupyterlab-workspace
+        persistentVolumeClaim:
+          claimName: jupyterlab-pvc
