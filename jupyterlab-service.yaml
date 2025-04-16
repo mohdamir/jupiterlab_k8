@@ -9,4 +9,4 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8888
-  type: LoadBalancer  # Use NodePort if you don't have a cloud provider with LoadBalancer support
+  type: ClusterIP  # Use NodePort if you don't have a cloud provider with LoadBalancer support

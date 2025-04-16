@@ -22,11 +22,11 @@ spec:
           value: "yes"
         env:
         - name: JUPYTER_TOKEN
-          value: "your-secure-token"
+          value: "tdulab123"
         volumeMounts:
-        - mountPath: /home/jovyan/work  # This will store user notebooks
+        - mountPath: /home/jupyter/notebooks  # This will store user notebooks
           name: jupyterlab-notebooks
-        - mountPath: /home/jovyan/.local  # This will store Python libraries (e.g., installed with pip)
+        - mountPath: /home/jovyan/libs  # This will store Python libraries (e.g., installed with pip)
           name: jupyterlab-libs
       volumes:
         - name: jupyterlab-notebooks
